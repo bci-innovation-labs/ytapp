@@ -4,11 +4,16 @@ import { Link } from "react-router-dom";
 
 function YouTubePlaylistRow(props) {
     const { video, onDeleteClick } = props;
+    const videoId = video.replace("https://www.youtube.com/watch?v=", "");
     return (
         <tr>
             <td>
                 <button onClick={ ()=>onDeleteClick(video) }>Delete</button> <br /><br />
-                <div dangerouslySetInnerHTML={{__html: video}} />
+                <iframe
+                    width="560"
+                   height="315"
+                      src={`https://www.youtube.com/embed/${videoId}`}
+              frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </td>
         </tr>
     );

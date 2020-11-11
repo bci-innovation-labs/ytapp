@@ -48,9 +48,17 @@ class DashboardContainer extends Component {
         });
     }
 
-    onDeleteClick(video) {
-        alert(video);
-        //TODO: Write code which will iterate through all the videos and delete the "video" found.
+    onDeleteClick(targetVideo) {
+        const { videosArray } = this.state;
+        const newVideoArray = [];
+        for (let searchVideo of videosArray) {
+            if (searchVideo !== targetVideo) {
+                newVideoArray.push(searchVideo);
+            }
+        }
+        this.setState({
+            videosArray: newVideoArray,
+        });
     }
 
     render() {
