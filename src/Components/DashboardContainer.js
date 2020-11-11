@@ -8,11 +8,13 @@ class DashboardContainer extends Component {
         this.state = {
             isAddVideoPanelOpen: false,
             addVideoIFrame: "",
+            videosArray: [],
         }
         this.onOpenAddVideoPanelClick = this.onOpenAddVideoPanelClick.bind(this);
         this.onCloseAddVideoPanelClick = this.onCloseAddVideoPanelClick.bind(this);
         this.onAddVideoOnChange = this.onAddVideoOnChange.bind(this);
         this.onAddVideoSubmitClick = this.onAddVideoSubmitClick.bind(this);
+        this.onDeleteClick = this.onDeleteClick.bind(this);
     }
 
     onOpenAddVideoPanelClick(e) {
@@ -35,25 +37,34 @@ class DashboardContainer extends Component {
     }
 
     onAddVideoSubmitClick(e) {
-        //TODO: SAVE THE DATA...
-        alert(this.state.addVideoIFrame);
+        const { videosArray, addVideoIFrame } = this.state;
+
+        videosArray.push(addVideoIFrame);
 
         this.setState({
             isAddVideoPanelOpen: false,
             addVideoIFrame: "",
+            videosArray: videosArray,
         });
     }
 
+    onDeleteClick(video) {
+        alert(video);
+        //TODO: Write code which will iterate through all the videos and delete the "video" found.
+    }
+
     render() {
-        const { isAddVideoPanelOpen, addVideoIFrame } = this.state;
+        const { isAddVideoPanelOpen, addVideoIFrame, videosArray } = this.state;
         return (
             <DashboardComponent
+                videosArray={videosArray}
                 isAddVideoPanelOpen={isAddVideoPanelOpen}
                 onOpenAddVideoPanelClick={this.onOpenAddVideoPanelClick}
                 onCloseAddVideoPanelClick={this.onCloseAddVideoPanelClick}
                 addVideoIFrame={addVideoIFrame}
                 onAddVideoOnChange={this.onAddVideoOnChange}
                 onAddVideoSubmitClick={this.onAddVideoSubmitClick}
+                onDeleteClick={this.onDeleteClick}
             />
         );
     }
