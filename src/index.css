@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.add-video-panel {
+    background-color: gray;
+    border-style: solid;
+    margin: 10px;
+    padding: 20px;
+}
